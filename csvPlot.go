@@ -12,12 +12,9 @@ import (
 	"gonum.org/v1/plot/vg"
 )
 
-func CsvPlot() {
+func CsvPlot(filename string) {
 
-	// f, err := os.Open("./data/bitStampUsd-full.csv")
-	// f, err := os.Open("./data/bitStampUsd-2017.csv")
-	// f, err := os.Open("./data/bitStampUsd-Oct2017.csv")
-	f, err := os.Open("./data/bitStampUsd-Dec2017.csv")
+	f, err := os.Open("./data/" + filename)
 
 	if err != nil {
 		log.Fatal(err)

@@ -37,8 +37,27 @@ func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 }
 
 func Plot(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	CsvPlot()
-	fmt.Fprintf(w, "plots generated..")
+	// bitStampUsd-full.csv
+	// bitStampUsd-2017.csv
+	// bitStampUsd-Oct2017.csv
+	// bitStampUsd-Dec2017.csv
+
+	filename := "bitStampUsd-Dec2017.csv"
+	CsvPlot(filename)
+
+	fmt.Fprintf(w, "plots generated from %s..\n", filename)
+}
+
+func Split(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	// bitStampUsd-full.csv
+	// bitStampUsd-2017.csv
+	// bitStampUsd-Oct2017.csv
+	// bitStampUsd-Dec2017.csv
+
+	filename := "bitStampUsd-Dec2017.csv"
+	CsvSplit(filename)
+
+	fmt.Fprintf(w, "training/testing data sets generated from %s..\n", filename)
 }
 
 func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
