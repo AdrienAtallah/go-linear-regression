@@ -83,7 +83,7 @@ func CsvPlot() {
 		if err := p.Save(
 			10*vg.Centimeter,
 			10*vg.Centimeter,
-			fmt.Sprintf("./graphs/%s_hist.png", records[0][c]),
+			fmt.Sprintf("./graphs/%s_hist.png", titles[0][c]),
 		); err != nil {
 			log.Fatal(err)
 		}
