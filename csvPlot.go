@@ -14,7 +14,11 @@ import (
 
 func CsvPlot() {
 
-	f, err := os.Open("./data/bitStampUSD.csv")
+	// f, err := os.Open("./data/bitStampUsd-full.csv")
+	// f, err := os.Open("./data/bitStampUsd-2017.csv")
+	// f, err := os.Open("./data/bitStampUsd-Oct2017.csv")
+	f, err := os.Open("./data/bitStampUsd-Dec2017.csv")
+
 	if err != nil {
 		log.Fatal(err)
 	}
