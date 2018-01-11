@@ -34,7 +34,7 @@ func CsvPlot() {
 		log.Fatal(err)
 	}
 
-	//skip the header
+	titles := records[0:1]
 	records = records[1:]
 
 	// we iterate over all the records
@@ -68,7 +68,7 @@ func CsvPlot() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		p.Title.Text = fmt.Sprintf("Histogram of %s", records[0][c])
+		p.Title.Text = fmt.Sprintf("Histogram of %s", titles[0][c])
 
 		// create a new normalized histogram
 		// and add it to the plot
