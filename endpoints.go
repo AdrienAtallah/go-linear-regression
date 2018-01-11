@@ -36,6 +36,11 @@ func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	w.Write(out)
 }
 
+func Plot(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	CsvPlot()
+	fmt.Fprintf(w, "plots generated..")
+}
+
 func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
 }

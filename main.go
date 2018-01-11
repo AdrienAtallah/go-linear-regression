@@ -15,6 +15,7 @@ func main() {
 	router := httprouter.New()
 	router.GET("/", Index)
 	router.GET("/hello/:name", Hello)
+	router.GET("/plot", Plot)
 
 	fmt.Println("Listening and Serving..")
 	log.Fatal(http.ListenAndServe(":8081", router))
