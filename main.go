@@ -14,7 +14,6 @@ func main() {
 
 	router := httprouter.New()
 	router.GET("/", Index)
-	router.GET("/hello/:name", Hello)
 	router.GET("/plot", Plot)
 	router.GET("/split", Split)
 	router.GET("/train", Train)

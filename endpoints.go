@@ -63,7 +63,3 @@ func Split(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 func Train(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	TrainModel()
 }
-
-func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
-}
