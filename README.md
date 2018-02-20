@@ -1,4 +1,3 @@
-# Crypto Value Predictor #
 
 build dependencies (linux):
 
