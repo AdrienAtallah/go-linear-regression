@@ -61,5 +61,6 @@ func Split(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func Train(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	fmt.Println("training model..")
 	TrainModel()
 }
