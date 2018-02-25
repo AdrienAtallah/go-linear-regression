@@ -35,10 +35,11 @@ type neuralNetConfig struct {
 	learningRate  float64
 }
 
-func main() {
+//NeuralNet main:
+func RunNeuralNet() {
 
 	// Form the training matrices.
-	inputs, labels := makeInputsAndLabels("data/train.csv")
+	inputs, labels := makeInputsAndLabels("data/iris/train.csv")
 
 	// Define our network architecture and learning parameters.
 	config := neuralNetConfig{
@@ -56,7 +57,7 @@ func main() {
 	}
 
 	// Form the testing matrices.
-	testInputs, testLabels := makeInputsAndLabels("data/test.csv")
+	testInputs, testLabels := makeInputsAndLabels("data/iris/test.csv")
 
 	// Make the predictions using the trained model.
 	predictions, err := network.predict(testInputs)
