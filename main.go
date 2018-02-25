@@ -17,6 +17,7 @@ func main() {
 	router.GET("/plot", Plot)
 	router.GET("/split", Split)
 	router.GET("/train", Train)
+	router.GET("/neural", ExecuteNN)
 
 	fmt.Println("Listening and Serving..")
 	log.Fatal(http.ListenAndServe(":8081", router))

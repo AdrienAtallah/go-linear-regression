@@ -64,3 +64,8 @@ func Train(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	fmt.Println("training model..")
 	TrainModel()
 }
+
+func ExecuteNN(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	fmt.Println("executing neural network..")
+	RunNeuralNet()
+}
