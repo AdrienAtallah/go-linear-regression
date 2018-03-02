@@ -11,27 +11,37 @@ CREATE USER admin;
 CREATE DATABASE testapp;
 GRANT ALL PRIVILEGES ON DATABASE testapp TO admin;
 
+//exit psql (ctrl+d)
+
 apt-get update && apt-get install vim
 
 psql -U postgres
 
 SHOW hba_file;
+ //exit psql (ctrl+d)
  //vim edit this file to allow connections, last line:
  host all "admin" 0.0.0.0/0 trust
  
 ========
-
+//run an image, create container from it:
 docker run -p 5432 db //let docker choose exposed port
-
+//?
 =======
 postgres commands:
 
+\? --help commands
+\h --help sql commands
+\conninfo --connection info
+
+
+\z --To list all of the tables, views, and sequences in the database
+
 \l --list all databases
 
-connect <database> --connect to database
+\c <database> --connect to database
 
 \d --list all tables
-
+\dt --list the database's tables and their respective owners
 \d+ test --describe tables
 
 --sql:-- 
@@ -53,14 +63,31 @@ VALUES ('hank', 63); --add data
 
 SELECT * FROM test
 
-CREATE TABLE titlebasics (tconst VARCHAR, titleType	VARCHAR, primaryTitle VARCHAR,	originalTitle VARCHAR,	isAdult	VARCHAR, startYear VARCHAR,	endYear VARCHAR, runtimeMinutes VARCHAR, genres VARCHAR)
+CREATE TABLE titlebasics (tconst VARCHAR, titleType	VARCHAR, primaryTitle VARCHAR,	originalTitle VARCHAR,	isAdult	VARCHAR, startYear VARCHAR,	endYear VARCHAR, runtimeMinutes VARCHAR, genres VARCHAR);
 
 COPY titlebasics FROM '/assets/data.tsv' DELIMITER E'\t'; --copy tsv file into titlebasics table
+-----------------
+
+CREATE TABLE bitcoinprice (date VARCHAR, open VARCHAR, high VARCHAR, low VARCHAR, close VARCHAR, volume VARCHAR, marketcap VARCHAR);
+
+CREATE TABLE litecoinprice (date VARCHAR, open VARCHAR, high VARCHAR, low VARCHAR, close VARCHAR, volume VARCHAR, marketcap VARCHAR);
+
+CREATE TABLE rippleprice (date VARCHAR, open VARCHAR, high VARCHAR, low VARCHAR, close VARCHAR, volume VARCHAR, marketcap VARCHAR);
 
 =============
 docker -copy files to image:
 
 sudo docker cp assets cocky_bhabha:/assets
+
+=============
+//commit edited containter to new image:
+
+sudo docker commit 2c7d020ce143 psql-nn //edited container id 
+
+docker run --name psql-nn_dev -p 5432 -d psql-nn 
+=============
+
+//volumes:
 
 
 
