@@ -1,0 +1,66 @@
+go-postgresql:
+steps (http://fabioberger.com/post/2014-12-19-how-to-dockerize-golang-webapp-with-postgres-db/):
+
+sudo docker pull postgres
+sudo docker run --name db -e admin=admin -d postgres
+sudo docker exec -it db /bin/bash
+
+psql -U postgres 
+
+CREATE USER admin;
+CREATE DATABASE testapp;
+GRANT ALL PRIVILEGES ON DATABASE testapp TO admin;
+
+apt-get update && apt-get install vim
+
+psql -U postgres
+
+SHOW hba_file;
+ //vim edit this file to allow connections, last line:
+ host all "admin" 0.0.0.0/0 trust
+ 
+========
+
+docker run -p 5432 db //let docker choose exposed port
+
+=======
+postgres commands:
+
+\l --list all databases
+
+connect <database> --connect to database
+
+\d --list all tables
+
+\d+ test --describe tables
+
+--sql:-- 
+
+ALTER TABLE test
+ADD name CHAR(255);  --add name column of strings
+
+ALTER TABLE test
+ADD age INT;  --add age column of ints
+
+INSERT INTO test
+VALUES ('joe', 33); --add data
+
+INSERT INTO test
+VALUES ('mary', 303); --add data
+
+INSERT INTO test
+VALUES ('hank', 63); --add data
+
+SELECT * FROM test
+
+CREATE TABLE titlebasics (tconst VARCHAR, titleType	VARCHAR, primaryTitle VARCHAR,	originalTitle VARCHAR,	isAdult	VARCHAR, startYear VARCHAR,	endYear VARCHAR, runtimeMinutes VARCHAR, genres VARCHAR)
+
+COPY titlebasics FROM '/assets/data.tsv' DELIMITER E'\t'; --copy tsv file into titlebasics table
+
+=============
+docker -copy files to image:
+
+sudo docker cp assets cocky_bhabha:/assets
+
+
+
