@@ -1,12 +1,15 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
 )
+
+var db *sql.DB
 
 func main() {
 
@@ -21,4 +24,15 @@ func main() {
 
 	fmt.Println("Listening and Serving..")
 	log.Fatal(http.ListenAndServe(":8081", router))
+}
+
+func initDb() {
+	var err error
+	fmt.Println("initializing database")
+
+	db, err = sql.Open("postgres", "host=localhost port=32772 user=admin password=admin dbname=postgres sslmode=disable")
+
+	if err != nil {
+		fmt.Println("error connection to db", err.Error())
+	}
 }
