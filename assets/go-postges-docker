@@ -10,6 +10,9 @@ psql -U postgres
 CREATE USER admin;
 CREATE DATABASE testapp;
 GRANT ALL PRIVILEGES ON DATABASE testapp TO admin;
+GRANT ALL PRIVILEGES ON TABLE bitcoinprice TO admin;
+GRANT ALL PRIVILEGES ON TABLE litecoinprice TO admin;
+GRANT ALL PRIVILEGES ON TABLE rippleprice TO admin;
 
 //exit psql (ctrl+d)
 
@@ -86,8 +89,13 @@ sudo docker commit 2c7d020ce143 psql-nn //edited container id
 
 docker run --name psql-nn_dev -p 5432 -d psql-nn 
 =============
-
 //volumes:
 
+//in official postgres docker file:
+VOLUME /var/lib/postgresql/data
 
+=============
+//data dump:
+
+pg_dump -U admin neuron > dbexport.pgsql
 
